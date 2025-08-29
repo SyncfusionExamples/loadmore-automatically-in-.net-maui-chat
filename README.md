@@ -25,14 +25,8 @@ ViewModel:
     {      
         private LoadMoreOption loadMoreBehavior = LoadMoreOption.Auto;
 
-        /// <summary>
-        /// Gets or sets the load more command of SfChat.
-        /// </summary>
         public ICommand LoadMoreCommand { get; set; }
 
-        /// <summary>
-        /// Gets or sets the load more behavior of the chat control.
-        /// </summary>
         public bool LoadMoreBehavior
         {
             get { return this.loadMoreBehavior; }
@@ -43,9 +37,6 @@ ViewModel:
             }
         }
 
-        /// <summary>
-        /// Gets or sets the message conversation of SfChat.
-        /// </summary>
         public ObservableCollection<object> Messages
         {
             get{ return this.messages; }
@@ -61,10 +52,7 @@ ViewModel:
             this.Messages = CreateMessages();
             LoadMoreCommand = new Command<object>(LoadMoreItems, CanLoadMoreItems);
         }
-
-        /// <summary>
-        /// Returns whether the load more command can execute.
-        /// </summary>        
+    
         private bool CanLoadMoreItems(object obj)
         {
             // If messages are still there in the old message collection, then execute the load more command.
@@ -81,7 +69,6 @@ ViewModel:
 
             return true;
         }
-
     
         private async void LoadMoreItems(object obj)
         {
@@ -100,10 +87,6 @@ ViewModel:
             }
         }
 
-    
-        /// <summary>
-        /// Adds the next ten messages from the older messages of the conversation to see messages.
-        /// </summary>
         private void LoadMoreMessages()
         {        
             for (int i = 1; i <= 10 ; i++)
